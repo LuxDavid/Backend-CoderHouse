@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 
 class ProductManager {
 
@@ -121,22 +121,7 @@ class ProductManager {
 
 }
 
-const productNew1 = new ProductManager('./products.json');
-
-productNew1.updateProduct(1,{price:20000,title:"Computadora Gamar PRO"});
-
-// productNew1.addProduct({
-//     title: "Teclado Mecanico",
-//     description: "Teclado mecanico RGB",
-//     price: 1350,
-//     thumbnail: ["Imagen de teclado1","Imagen de teclado2"],
-//     code: "AABBa",
-//     stock: 160
-// });
-
-// productNew1.getProductById(5);
-
-// productNew1.deletProduct(5)
+export default ProductManager;
 
 
 
