@@ -20,7 +20,7 @@ try {
         style: 'index.css'
     });
 } catch (error) {
-    console.log(error);
+    return error;
 }
 
 });
@@ -29,10 +29,17 @@ try {
 
 router.get('/realTimeProducts', async (req,res)=>{
 
-res.render('realTimeProducts',{
-    products:products,
-    style: 'index.css'
-});
+try {
+
+    const productsDB= await productModel.find().lean().exec();
+
+    res.render('realTimeProducts',{
+        products:productsDB,
+        style: 'index.css'
+    });
+} catch (error) {
+    return error;
+}
 
 });
 

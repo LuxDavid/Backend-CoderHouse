@@ -1,4 +1,5 @@
 import { productModel } from "../models/productModel.js";
+import {io} from '../../app.js';
 
 class ProductManagerMDB{
 
@@ -35,6 +36,7 @@ async addProduct(product) {
 
     try {
         const result = await productModel.create(newProduct);
+        io.emit('newP', newProduct);
 
         return newProduct
     } catch (error) {
@@ -88,8 +90,8 @@ async updateProduct(id, prod) {
 
     try {
         const result = await productModel.deleteOne({ _id: id });
-        const deletedProduct=this.getProductsById(id);
-        return deletedProduct;
+        const products= await productModel.find();
+        io.emit('deletProduct', products);
         
     } catch (error) {
         return error
