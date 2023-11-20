@@ -18,8 +18,8 @@ router.get('/', async (req,res)=>{
 
 try {
 
-    // const productsDB= await new ProductManagerMDB().getProducts()
-    // console.log(productsDB);
+    const productsDB= await new ProductManagerMDB().getProducts()
+    console.log(productsDB);
 
     res.render('home',{
         products:products,
