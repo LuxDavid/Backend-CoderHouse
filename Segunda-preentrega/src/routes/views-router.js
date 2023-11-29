@@ -1,6 +1,7 @@
 import { Router } from "express";
 import ProductManager from "../DAO/fileSystem/productManager.js";
 import {productModel}  from "../DAO/models/productModel.js";
+import CartManagerDB from "../DAO/mongoDB/cartManagerMDB.js";
 import { cartModel } from "../DAO/models/cartModel.js";
 
 const router=Router();
@@ -84,9 +85,24 @@ try {
 router.get('/carts/:cid', async (req,res)=>{
 
 try {
+
+    const {cid}=req.params
+
+    const cart= new CartManagerDB();
+
+    const cartSearch= await cartModel.findOne({ _id: cid }).lean().exec();
+
+    if(!cartSearch) return res.status(400).send({error:'Cart not found'})
+
+    console.log(cartSearch.products);
+
+    res.render('cart',{
+        style:'index.css',
+        cart:cartSearch.products
+    })
     
 } catch (error) {
-    
+    return error
 }
 
 })

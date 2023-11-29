@@ -30,7 +30,7 @@
   <h5 class="card-title">{{this.title}}</h5>
   <p class="card-text">${{this.price}}</p>
   <p class="card-text">Disponibles: {{this.stock}}</p>
-  <a href="#" id={{this.title}} class="btn btn-dark">Agregar al carrito</a>
+  <a href="#" id={{this.title}} class="add-cart btn btn-dark">Agregar al carrito</a>
 </div>
 </div>
 {{/each}}
@@ -50,4 +50,5 @@
 </div>
 
 <script src="/js/products-events.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
