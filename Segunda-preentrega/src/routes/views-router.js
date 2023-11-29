@@ -1,6 +1,7 @@
 import { Router } from "express";
 import ProductManager from "../DAO/fileSystem/productManager.js";
 import {productModel}  from "../DAO/models/productModel.js";
+import { cartModel } from "../DAO/models/cartModel.js";
 
 const router=Router();
 
@@ -46,6 +47,7 @@ try {
         style: 'index.css',
         productData:productsDB,
     });
+
 } catch (error) {
     return error;
 }
@@ -72,11 +74,22 @@ try {
         products:productsDB.payload,
         style: 'index.css'
     });
+
 } catch (error) {
     return error;
 }
 
 });
+
+router.get('/carts/:cid', async (req,res)=>{
+
+try {
+    
+} catch (error) {
+    
+}
+
+})
 
 
 export default router
